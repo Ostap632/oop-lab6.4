@@ -1,17 +1,4 @@
-#include <iostream>
-#include <string>
-
-using namespace std;
-
-template <typename T>
-bool hasAdjacentDuplicates(T arr[], int size) {
-    for (int i = 0; i < size - 1; i++) {
-        if (arr[i] == arr[i + 1]) {
-            return true;
-        }
-    }
-    return false;
-}
+#include "temp6.4.hpp"
 
 int main() {
     int intArr[] = { 1, 2, 2, 4, 5 };
@@ -38,23 +25,25 @@ int main() {
     cout << "Enter size of your array: ";
     cin >> n;
 
-    int* userArr = new int[n];
-    cout << "Enter " << n << " integers:" << endl;
-    for (int i = 0; i < n; i++) {
-        cout << "element[" << i << "] = ";
-        cin >> userArr[i];
+    if (n > 0) {
+        int* userArr = new int[n];
+        cout << "Enter " << n << " integers:" << endl;
+        for (int i = 0; i < n; i++) {
+            cout << "element[" << i << "] = ";
+            cin >> userArr[i];
+        }
+
+        cout << "\nYour array: ";
+        for (int i = 0; i < n; i++) cout << userArr[i] << " ";
+        cout << endl;
+
+        if (hasAdjacentDuplicates(userArr, n))
+            cout << "Result: Found adjacent duplicates" << endl;
+        else
+            cout << "Result: No adjacent duplicates found" << endl;
+
+        delete[] userArr;
     }
-
-    cout << "\nYour array: ";
-    for (int i = 0; i < n; i++) cout << userArr[i] << " ";
-    cout << endl;
-
-    if (hasAdjacentDuplicates(userArr, n))
-        cout << "Result: Found adjacent duplicates" << endl;
-    else
-        cout << "Result: No adjacent duplicates found" << endl;
-
-    delete[] userArr;
 
     system("pause");
     return 0;
